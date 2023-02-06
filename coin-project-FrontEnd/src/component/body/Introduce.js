@@ -54,7 +54,7 @@ export default function Introduce() {
 
                     {allLink.map(key => (
                     <div className="form-address" key={key.id}>
-                        <div className="form-control submit"><input className="input" ref={text} value={key.LinkAddress}></input><p onClick={CopyAdd} >Copy Address</p></div>
+                        <div className="form-control submit"><input className="input" ref={text} defaultValue={key.LinkAddress}></input><p onClick={CopyAdd} >Copy Address</p></div>
                         <p className="Button-str"><Link to="/home/aboutUs">About SNDG</Link></p>
                     </div>
                     ))}

@@ -21,7 +21,7 @@ export default function Footer() {
         <>
             <h3 className="footer-title"> Join our ever-growing community </h3>
             {allLink.map((key) => (
-                <div className="content-footer">
+                <div className="content-footer" key={key.id}>
                     <div className="list">
                         <i className="fa-brands fa-gitlab "></i>
                         <a href={key.GitLab} target={"_blank"} className="describe">GitLab</a>

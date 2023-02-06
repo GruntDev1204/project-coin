@@ -4,12 +4,18 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateIntroduce;
 use App\Models\IntroduceSndg;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IntroduceSndgController extends Controller
 {
 
     public function View(){
-        return view('SNDGSetting.editIntro');
+        $Login = Auth::guard('admin_managers')->user();
+        if($Login){
+            return view('editIntro');
+        }else{
+            return redirect('/login');
+        }
     }
 
     public function index()
@@ -38,7 +44,8 @@ class IntroduceSndgController extends Controller
 
 
     public function UpdateInfo(UpdateIntroduce $request)
-    {   $info = $request->all();
+    {
+        $info = $request->all();
         $data = IntroduceSndg::find($request->id);
         $data->update($info);
 

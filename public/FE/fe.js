@@ -22,13 +22,26 @@ new Vue({
             LinkAddress : '',
             Tiktok : '',
             Facebook : '',
+        },
+
+
+        arraySignUp:{
+            fullName:'',
+            password:'',
+            re_password:'',
+            ma_PIN: '',
+            user_info:'',
+        },
+        arraySignin:{
+            user_info:'',
+            password:'',
+            ma_PIN: '',
         }
 
     },
     created() {
           this.loadIntro()
           this.LoadLink()
-
     },
     methods: {
         //edit Info
@@ -98,7 +111,50 @@ new Vue({
                     alert(value[0])
                 });
             });
+         },
 
-    },
+        //admins
+        conFigAdmins(){
+            axios.post('/JoinSndg' , this.arraySignUp)
+                .then((res)=>{
+                    if(res.data.status){
+                        alert('tao làm ròi nè')
+                        alert(res.data.alert)
+                        this.arraySignUp.fullName =''
+                        this.arraySignUp.password =''
+                        this.arraySignUp.re_password =''
+                        this.arraySignUp.ma_PIN = ''
+                        this.arraySignUp.user_info =''
+                        setTimeout(function() {
+                            $(location).attr('href', '/login');;
+                          }, 3000);
+                    }else{
+                        alert('wtf')
+                    }
+                })
+                .catch((res)=>{
+                    var danh_sach_loi = res.response.data.errors;
+                    $.each(danh_sach_loi, function (key, value) {
+                        toastr.error(value[0]);
+                    });
+
+                })
+        },
+
+        LoginAction(){
+            axios.post('/login' , this.arraySignin)
+            .then((res)=>{
+                if(res.data.status == 2){
+                    toastr.success(res.data.alert)
+                    setTimeout(function() {
+                        $(location).attr('href', '/');;
+                      }, 3000);
+                }else if(res.data.status == 1){
+                    toastr.warning(res.data.alert)
+                }else{
+                    toastr.error('đăng nhập sida');
+                }
+            })
+        },
     }
 })

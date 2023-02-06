@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LinkEdit;
 use App\Models\Link;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LinkController extends Controller
 {
@@ -20,7 +21,13 @@ class LinkController extends Controller
 
     public function View()
     {
-        return view('SNDGSetting.editLink');
+        $Login = Auth::guard('admin_managers')->user();
+        if($Login){
+            return view('editLink');
+        }else{
+            return redirect('/login');
+
+        }
     }
 
     /**
