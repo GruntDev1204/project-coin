@@ -1,0 +1,60 @@
+@import './resetdf.scss';
+@import './header.scss';
+@import './footer.scss';
+@import './roadmap.scss';
+@import './token.scss';
+@import './effect.scss';
+@import './responsive.scss';
+@import './introl.scss';
+@import './object.scss';
+@import './member.scss';
+@import './responsive.scss';
+@import './welcome.scss';
+@include reset-df();
+
+
+.boddy {
+    width: 100%;
+    height: auto;
+    margin-bottom: $bottom-sm ;
+    background: $backGround-large;
+    background-attachment: $coDinhBackGround;
+    direction: ltr;
+    @include ConstWidth()
+}
+
+
+
+
+
+//thanh menu
+.thanh-menu {
+    padding: 20px;
+    margin-top: $top-sm;
+    border:$border-canh-thanhdai ;
+    border-radius: $border-canh;
+    width: $total-width;
+    background-color: $backGround-element;
+    @include rowDRT_center();
+}
+
+.thanh-menu ul {
+    @include rowDRT_center();
+    width: 100%;
+}
+
+.thanh-menu li {
+    cursor: pointer;
+    margin-right: $mg-right-md;
+   @include sm-font-2()
+}
+.Menu-area {
+    width: $total-width;
+    margin-top: $top-lg;
+    @include drt_colum();
+}
+
+
+
+
+
