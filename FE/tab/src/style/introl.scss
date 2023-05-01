@@ -1,0 +1,181 @@
+@import './object.scss';
+
+//form-intro
+.Logo-lg {
+    @include avatar-lg()
+}
+
+.Info-intro {
+    width: auto;
+    height: auto;
+   @include drt_col_start()
+}
+
+
+.Introduce-Team {
+    width: 100%;
+    @include drt_col_start()
+}
+
+.Introduce-Team .title {
+    font-weight: 900;
+    color: $color-font-7;
+    -webkit-text-stroke: 0.5px $color-font-7;
+    font-size: $font-size-sm;
+    letter-spacing: $space-font;
+    margin-bottom: $top-sm;
+}
+
+
+
+.form-Intro {
+    border: $border-input;
+    background-color: $backGround-element;
+    cursor: pointer;
+    @include columDRT_Card();
+    margin-bottom: $bottom-sm;
+}
+
+.area-info {
+    @include rowDRT_center();
+    margin-top: $top-sm;
+}
+
+
+.Title-Intro {
+    @include lg-font();
+    color: $color-font-4;
+    @include rowDRT_center();
+    -webkit-text-stroke: 0.5px $color-font-4;
+}
+
+.Tag-Intro {
+    margin-top: $top-font-mg ;
+    @include md-font();
+}
+
+
+//floky
+.the-floKy {
+    @include drt_colum();
+    padding: 20px 10px;
+    margin-top: $top-sm;
+    width: $full-width;
+    margin-bottom: $bottom-lg;
+}
+
+.floky-body {
+    width: $full-width;
+    @include drt_row();
+}
+
+.logo-list{
+	@include avatar-lg();
+
+}
+.object-floky {
+    width: 15%;
+    @include drt_colum();
+    margin-left: $mg-left-lg-2;
+    &:hover{
+         animation: shake 0.5s infinite ;
+        }
+}
+.object-floky:nth-child(1){
+    margin-left: 0;
+}
+.tieu-de {
+    margin-top: $top-font-mg;
+   @include sm-font();
+   color: $color-font-4;
+
+}
+.chu-thich {
+    margin-top: $top-font-mg-3;
+    @include sm-font-3();
+    letter-spacing: 1px;
+}
+.form-address {
+    @include rowDRT_center();
+    height: 100px;
+    margin-top: $top-lg + 10px;
+}
+.form-control {
+    width: 50%;
+    height: 46px;
+    border: 1px solid #e4ecff;
+    border-radius: 20px;
+    background-color: #e4ecff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 3px;
+}
+
+.button {
+    @include ButtonElement-md();
+   @include rowDRT_center();
+}
+
+.input {
+    width: 80%;
+    cursor: pointer;
+    color: $color-font-6;
+    font-size: $font-size-sm-2 ;
+    @include input-Primary()
+}
+
+.submit {
+    cursor: pointer;
+}
+
+.form-stories {
+   @include paddingY();
+   @include marginY();
+   @include marginX();
+    @include  drt_colum();
+    letter-spacing: $letterspacing-2;
+    border: $border-canh-thanhdai;
+    border-radius: $border-goc;
+    animation: fadeIn 2s;
+    background-image:  $color-bg-line , url('./images.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    &:hover{
+
+        animation: shake 2s infinite ;
+    }
+}
+
+.title-stories {
+    font-size: $font-size-sm;
+    font-weight: $font-weight2;
+    color: $color-font-7;
+}
+.area-title-str{
+    @include drt_row();
+    justify-content: space-between;
+    @include paddingX();
+    width: $total-width;
+    font-size: $font-size-sm;
+    color: $color-font-7;
+
+
+}
+
+.content-str {
+    @include paddingY();
+    @include drt_row;
+    width: $full-width*0.9;
+}
+
+.text-content-intro {
+    line-height: 1.5*$font-size-sm-3;
+    font-size: $font-size-sm-3;
+    font-family: sans-serif;
+    color: $color-font-5;
+    font-weight: 0.6*$font-weight2;
+    font-style: italic;
+}

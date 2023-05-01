@@ -1,0 +1,131 @@
+
+@import './object.scss';
+
+.welcome-form {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    overflow-y: hidden;
+
+    flex-wrap: wrap;
+    align-items: flex-start;
+    height: 700px;
+    width: 100%;
+    // background-image: url('./backgrwc.jpg');
+    background-color: $backGround-large;
+    @include Background-noChange();
+    padding-left: 200px;
+    padding-top: 200px;
+
+}
+.welcome-large {
+    color:  #FFFE06;
+    font-weight: 800;
+    width: 410px;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    /* The typwriter cursor */
+    animation: type 3s steps(40, end) forwards;
+    // ,blink 0.5s ease-in-out infinite alternate;
+    font-size: 80px;
+    text-align: left;
+    white-space: nowrap;
+
+}
+.welcome-sm {
+    width: fit-content;
+    font-size: 22px;
+    margin-bottom: 60px;
+    font-weight: 700;
+    margin-top: 40px;
+    color: #d8d5d5;
+    letter-spacing: $space-font;
+
+}
+
+.welcome-sm span:first-child,.welcome-sm span:last-child  {
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 30px;
+
+    display: block;
+    position: relative;
+    animation:
+        type 2.5s steps(70, end) 1s 1 normal both,
+
+}
+.welcome-sm span:last-child{
+    animation-delay: 5s;
+}
+.welcome-sm span:first-child{
+    animation-delay: 3s;
+}
+
+.tiep-tuc {
+    display: inline-block;
+    background: #3F475C;
+    color: #FFFFFF;
+    border: none;
+    outline: none;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 16px 32px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    gap: 10px;
+    display: flex;
+    animation: fadeIn 20s;
+}
+
+
+
+.tiep-tuc:hover {
+    transform: translateY(-7px);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    background: #333;
+    color: #FFFFFF;
+}
+
+//loading
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #3b3b3b7e;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content:center ;
+    justify-content:center ;
+    align-items: center;
+}
+
+.spinner {
+    position: absolute;
+    background-image: url('./moon.png');
+    background-size: cover;
+    width: 200px;
+    height: 197px;
+    border-radius: 50%;
+    animation: jump 2.6s infinite ;
+    margin-top: 20px;
+
+
+
+}
+
+.shadow{
+    background-color:  $backGround-element;
+    border-radius: 50%;
+    width: 200px;
+    height: 16px;
+    top: 68%;
+    position: absolute;
+    animation: shadowEffect 2.6s infinite ;
+
+}
+
+

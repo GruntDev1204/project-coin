@@ -1,0 +1,10 @@
+@media screen and (max-width: 400px){
+    .spinner{
+        display: none;
+    }
+    .loading-bar {
+        position: absolute;
+        width: 350px;
+    }
+
+}

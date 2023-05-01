@@ -1,0 +1,303 @@
+$backGround-element : #3F475C;
+$backGround-large : #161b24;
+$input-color-light : #e4ecff;
+$input-color-dark : #363d4e;
+
+
+$backGround-dark : #01050e;
+
+$backGround-dark-2 :#1D222A;
+// $backGround-dark-3 :#3F475C;
+
+
+$coDinhBackGround : fixed;
+$border-button-dark : 1px solid #3b3b3b7e;
+$border-button-light : 1px solid #e4ecff;
+$border-canh-thanhdai : 1px solid #3E4357;
+
+$border-goc : 20px;
+$border-tron : 50%;
+$border-canh: 20px;
+
+
+$color-font-1: #FBEECA;
+$color-font-2: #e4ecff;
+$color-font-3 : #8881ED;
+$color-font-4 : #FFF06F;
+$color-font-5 : #FFFE06;
+$color-font-6 : #151515;
+$color-font-7 : #FFFFFF;
+$color-font-8 :#4A90E2;
+$color-font-9 :#05e28d;
+
+
+
+$font-weight : 600;
+$font-weight2 : 700;
+$font-weight3 : 800;
+$font-weight4 : 900;
+
+$color-bg-line: linear-gradient(rgba(0, 0, 0, 0.747), rgba(0, 0, 0, 0.699));
+
+
+
+$font-button-color : rgb(245, 245, 245);
+
+
+$border-input : 1px solid #3F475C;
+
+$border-background-dark : 1px solid #151515;
+
+
+$bottom-sm : 50px;
+$bottom-lg : 100px;
+$top-sm : 50px;
+$top-lg : 100px;
+$top-font-mg : 30px;
+$top-font-mg-2 : 20px;
+$top-font-mg-3 : 10px;
+
+
+
+$mg-right-sm : 30px;
+$mg-right-md : 60px;
+$mg-right-lg : 100px;
+$mg-right-lg-2 : 120px;
+
+
+$mg-left-sm : 30px;
+$mg-left-md : 60px;
+$mg-left-lg-2 : 120px;
+
+
+//font-size
+$font-size-sm-2 : 25px;
+$font-size-sm-3 : 20px;
+$font-size-lg : 120px;
+$font-size-md : 50px;
+$font-size-sm : 30px;
+
+
+
+$full-width : 100%;
+$total-width : 75%;
+
+$space-font : 2px;
+$letterspacing-1 : 1px;
+$letterspacing-2 : 0.5px;
+$letterspacing-3 : 0.2px;
+
+
+
+
+
+
+@mixin paddingY{
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+}
+@mixin paddingX{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+@mixin marginY{
+    margin-left: $mg-left-sm;
+    margin-right: $mg-right-sm;
+
+}
+@mixin marginX{
+    margin-top: $top-sm;
+    margin-bottom: $bottom-sm;
+
+}
+@mixin drt_col_start {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@mixin drt_colum() {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@mixin drt_row() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin input-Primary() {
+    background-color: $input-color-light;
+    padding: 0 5px 0 5px;
+    border-radius: $border-goc;
+    border: none;
+    font-size: 20px;
+    font-weight: 600;
+    color: $backGround-dark;
+
+}
+
+@mixin ButtonElement-md() {
+    background-color: $backGround-element;
+    border: $border-button-light ;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: $font-button-color;
+    border-radius: $border-goc;
+    font-size: 23px;
+    font-weight: 900;
+    width: 200px;
+    height: 40px;
+
+    &:hover {
+        background-color: $backGround-dark;
+        color: $color-font-5;
+    }
+}
+
+@mixin lg-font() {
+    font-size: $font-size-lg;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+
+@mixin md-font() {
+    font-size: $font-size-md;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: $color-font-3;
+    -webkit-text-stroke: 0.5px $color-font-3;
+
+    &:hover {
+        color: $color-font-2;
+        -webkit-text-stroke: 0.5px $color-font-2;
+    }
+}
+
+@mixin sm-font() {
+    font-size: $font-size-sm;
+    font-weight: 800;
+    color: $color-font-1;
+
+    &:hover {
+        color: $color-font-2;
+    }
+
+}
+
+@mixin sm-font-2() {
+    font-size: $font-size-sm-2;
+    font-weight: 700;
+    color: $color-font-1;
+
+    &:hover {
+        color: $color-font-2;
+    }
+
+}
+
+@mixin sm-font-3 {
+    font-weight: 500;
+    font-size: $font-size-sm-3;
+    cursor: pointer;
+    color: $color-font-7 ;
+}
+
+@mixin columDRT_Card() {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 400px;
+    border-radius: 20px;
+}
+
+@mixin rowDRT_center() {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin ConstWidth() {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+@mixin Background-noChange() {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+@mixin avatar-lg {
+    height: 210px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+
+//thuộc tính của ảnh
+@mixin avatar-sm {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+@mixin avatar-md {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+}
+
+@mixin avatar-sm {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+
+}
+
+@mixin reset-df() {
+    img {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+
+    a {
+        border-bottom: 0px;
+        text-decoration: none;
+    }
+
+    textarea {
+        all: unset;
+    }
+
+    .center {
+        @include drt_colum();
+    }
+    .title, p ,h3 ,h2,h1 ,.content-str,.object-floky,.area-title-str{
+        cursor: pointer;
+    }
+    section{
+        width: $full-width;
+        overflow-x: hidden;
+        margin-bottom: $bottom-sm;
+    }
+    .title-font{
+        font-size: $font-size-md;
+        font-weight: $font-weight4;
+        color: $color-font-7;
+        margin-bottom: $bottom-sm;
+    }
+    .close:hover{
+        color: red;
+    }
+}

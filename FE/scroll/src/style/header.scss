@@ -1,0 +1,61 @@
+@import './object.scss';
+@include reset-df();
+
+.header {
+	height: 65px;
+	border-bottom: $border-background-dark;
+	background: $backGround-dark;
+	@include drt_row();
+	padding: 10px;
+}
+
+.header-left {
+	width: 50%;
+	padding-left: 15px;
+    @include drt_row();
+}
+
+.header-left .logo-team {
+	font-size: $font-size-sm;
+	color: $color-font-4;
+    font-weight: $font-weight4;
+	width: 30%;
+	cursor: pointer;
+}
+
+.header-left .list-header {
+  width: 80%;
+  display: flex;
+  gap: 40px;
+  @include sm-font-3();
+}
+.header-left .list-header li:hover{
+	color:$color-font-8;
+}
+.header-right{
+	display: flex;
+    align-items: center;
+    padding-right: 15px;
+    width: 50%;
+    justify-content: flex-end;
+}
+.logo{
+   @include avatar-sm();
+}
+.info-header{
+	display: flex;
+    flex-direction: column;
+    gap: 5px;
+	cursor: pointer;
+	padding-left: 5px;
+}
+.info-header p{
+     font-size: 20px;
+	 font-weight: 600;
+	 color: $color-font-9;
+}
+.info-header .title{
+	color: $color-font-4;
+	font-size: $font-size-sm-2;
+	font-weight: $font-weight;
+}
