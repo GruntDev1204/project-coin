@@ -1,18 +1,22 @@
+@import './object.scss';
+@import './effect.scss';
+
 .chart-container {
-    height: 460px;
-    width: 100%;
-    margin: 0 auto;
-    background-color: #3F475C;
-    display: flex;
-    align-items: center;
-    border-radius: 20px;
+   @include backgroundfullsize();
+    @include marginX;
+    @include ConstWidth();
+    background-color: $backGround-element;
+    @include drt_colum();
+   @include paddingY();
+   border-radius: 20px;
+   &:hover{
+    animation: shake 2s infinite ;
+    }
+
 }
 .token-area{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    cursor: pointer;
-    margin-bottom: 50px;
+    height: auto;
+    margin-bottom: $bottom-sm;
+
 }
 
