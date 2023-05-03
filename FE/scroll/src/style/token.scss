@@ -8,7 +8,7 @@
     background-color: $backGround-element;
     @include drt_colum();
    @include paddingY();
-   border-radius: 20px;
+   border-radius: $border-canh;
    &:hover{
     animation: shake 2s infinite ;
     }
