@@ -2,25 +2,19 @@
 @import './object.scss';
 
 .welcome-form {
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    overflow-y: hidden;
-
-    flex-wrap: wrap;
-    align-items: flex-start;
-    height: 700px;
+    @include drt_col_start-2();
+    @include ConstWidth();
+    height: 800px;
     width: 100%;
-    // background-image: url('./backgrwc.jpg');
-    background-color: $backGround-large;
+
+    background-image:  url('./backgrwc.jpg');
     @include Background-noChange();
-    padding-left: 200px;
-    padding-top: 200px;
+    padding: 200px 0px 0px 200px;
 
 }
 .welcome-large {
-    color:  #FFFE06;
-    font-weight: 800;
+    color:  $color-font-4;
+    font-weight: $font-weight3;
     width: 410px;
     overflow: hidden; /* Ensures the content is not revealed until the animation */
     /* The typwriter cursor */
@@ -62,30 +56,29 @@
 }
 
 .tiep-tuc {
-    display: inline-block;
-    background: #3F475C;
-    color: #FFFFFF;
-    border: none;
-    outline: none;
-    font-size: 24px;
-    font-weight: bold;
-    padding: 16px 32px;
-    border-radius: 50px;
+    font-size: 40px;
+    line-height: 50px;
+    font-weight: 800;
+    margin-top: 10px;
+    color: #ffd900;
+    background: #1d151579;
+    border: 1px solid #ffd900;
+    letter-spacing: 0.5px;
+    transition: 0.3s ease;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    gap: 10px;
-    display: flex;
+    font-style: italic;
+    padding:5px 10px;
+    border-radius: 20px;
     animation: fadeIn 20s;
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 10px 10px 5px rgba(247, 247, 1, 0.473);;
+    }
 }
 
 
 
-.tiep-tuc:hover {
-    transform: translateY(-7px);
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-    background: #333;
-    color: #FFFFFF;
-}
+
 
 //loading
 .loading {
@@ -105,7 +98,7 @@
 
 .spinner {
     position: absolute;
-    background-image: url('./moon.png');
+    background-image: url('./coin.jpg');
     background-size: cover;
     width: 200px;
     height: 197px;

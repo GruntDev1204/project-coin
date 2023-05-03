@@ -14,13 +14,14 @@
 
 
 .boddy {
-    width: 100%;
+    width: $full-width;
     height: auto;
-    margin-bottom: $bottom-sm ;
     background: $backGround-large;
     background-attachment: $coDinhBackGround;
     direction: ltr;
-    @include ConstWidth()
+    @include ConstWidth();
+    @include drt_colum();
+
 }
 
 
@@ -44,7 +45,6 @@
 }
 
 .thanh-menu li {
-    cursor: pointer;
     margin-right: $mg-right-md;
    @include sm-font-2()
 }
@@ -53,6 +53,7 @@
     margin-top: $top-lg;
     @include drt_colum();
 }
+
 
 
 

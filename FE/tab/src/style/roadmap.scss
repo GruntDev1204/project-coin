@@ -178,11 +178,16 @@
     line-height: 50px;
     font-weight: 800;
     margin-top: 10px;
-    color: #fff;
+    color: #ffd900;
     transition: 0.3s ease;
     cursor: pointer;
+    font-style: italic;
+    padding:5px 10px;
+    border-radius: 10px;
+    &:hover {
+    transform: translateY(-3px);
+    box-shadow: 2px 2px 5px rgba(247, 247, 1, 0.473);
+}
 }
 
-.up-to:hover {
-    transform: translateY(-5px);
-}
+
