@@ -8,7 +8,7 @@ class Chart extends Component {
     };
 
     componentDidMount() {
-        axios.get('http://sndg.local/api/Sndg/apiToken')
+        axios.get('http://newsndg.local:8000/api/Sndg/apiToken')
             .then(response => {
                 this.setState({ data: response.data.dataToken });
             })

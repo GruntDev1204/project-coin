@@ -22,7 +22,7 @@
 }
 
 .header-left .list-header {
-  width: 0.8*$full-width;
+  width: $total-width;
   @include drt_row();
   @include sm-font-3();
 }
@@ -33,28 +33,28 @@
 	color:$color-font-8;
 }
 .header-right{
-	display: flex;
-    align-items: center;
-    padding-right: 15px;
-    width: 50%;
-    justify-content: flex-end;
+	 @include drt_row_end();
+    width: 0.5*$full-width;
+    margin-right: 0.01*$full-width;
+    height: 100%
 }
 .logo{
    @include avatar-sm();
 }
 .info-header{
-	display: flex;
-    flex-direction: column;
-    gap: 5px;
+	@include drt_col_start();
 	cursor: pointer;
-	padding-left: 5px;
+    height: 100%;
+
 }
 .info-header p{
      font-size: 20px;
 	 font-weight: 600;
 	 color: $color-font-9;
+     margin-left: 10px;
 }
 .info-header .title{
+    margin-bottom: 5px;
 	color: $color-font-4;
 	font-size: $font-size-sm-2;
 	font-weight: $font-weight;

@@ -13,14 +13,14 @@ export default function Introduce() {
     const[allLink , setLink] = useState([]);
 
     const ShowData = () => {
-        axios.get('http://sndg.local/api/Sndg/introduce')
+        axios.get('http://newsndg.local:8000/api/Sndg/introduce')
             .then(res =>{
                 setIntro(res.data.dataIntroduce)
             })
     }
     const ShowLink = () => {
         axios
-            .get('http://sndg.local/api/Sndg/link')
+            .get('http://newsndg.local:8000/api/Sndg/link')
             .then((res)=> {
                 setLink(res.data.dataLink)
             })

@@ -5,7 +5,7 @@ export default function RMap() {
     const [dataLists, setDataLists] = useState({});
 
     useEffect(() => {
-        axios.get('http://sndg.local/api/Sndg/RM')
+        axios.get('http://newsndg.local:8000/api/Sndg/RM')
             .then((res) => {
                 if (res.data.status === 200) {
                     setDataLists(res.data.dataLists);

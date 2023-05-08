@@ -38,6 +38,20 @@ Route::get('/changeIn4', [AdminManagerController::class, 'changeUrIn4Index']);
 
 Route::get('/setting', [AdminManagerController::class, 'loadMyfinfo']);
 Route::post('/setting', [AdminManagerController::class, 'updatedInfo']);
+Route::get('/resetPass', [AdminManagerController::class, 'viewpassword']);
+Route::get('/forgetPass', [AdminManagerController::class, 'viewQuenpass']);
+
+Route::post('/resetPass', [AdminManagerController::class, 'resetPassword']);
+
+
+
+Route::get('/checkAction/{hash}', [AdminManagerController::class, 'checkEmail']);
+
+Route::post('/checkAction/{hash}', [AdminManagerController::class, 'ChangeActionPass']);
+
+
+
+
 
 
 

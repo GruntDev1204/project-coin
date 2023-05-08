@@ -34,8 +34,9 @@
                     <h3 class="title-info">Thay đổi email liên hệ </h3>
                     <input id="email" type="email">
                 </div>
-                <div class="area-changeInfo">
-                    <div class="footer-form"><button id="submitUpdate" class="btn-login-1 toggle" type="submit">Save</button></div>
+                <div class="footer-form">
+                    <button id="submitUpdate" class="btn-login-1 toggle" type="submit">Save</button>
+                    <button  class="btn-login-1" style="background: rgba(199, 5, 5, 0.904)" type="submit"><a target="_blank"  href="/resetPass">Security<i class="fas fa-user-lock"></i></a></button>
                 </div>
             </div>
         </div>

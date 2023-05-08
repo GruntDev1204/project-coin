@@ -4,18 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AdminsCreate;
 use App\Http\Requests\AdminsLogin;
+use App\Http\Requests\changePassword;
+use App\Http\Requests\changePasswordAction;
 use App\Http\Requests\updateIn4;
+use App\Mail\resetPassword;
 use App\Mail\YourEmail;
 use App\Models\AdminManager;
-use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Contracts\Session\Session;
+use Illuminate\Http\Request as sida;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Validator;
-use stdClass;
-use Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver;
-use Symfony\Component\VarDumper\Caster\RedisCaster;
-use Yoeunes\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Session as FacadesSession;
+use Illuminate\Support\Str;
 
 class AdminManagerController extends Controller
 {
@@ -47,6 +48,7 @@ class AdminManagerController extends Controller
         $data = $request->all();
         $data['password']   = bcrypt($request->password);
         $data['ma_PIN']   = empty($request->ma_PIN) ? rand(100000, 999999) : $request->ma_PIN;
+        $data['hash']   = Str::uuid();
         $data['avatar']   = '/photos/shares/1.png';
         AdminManager::create($data);
         Mail::to($request->email)->send(new YourEmail(
@@ -212,6 +214,128 @@ class AdminManagerController extends Controller
         } else {
             Toastr()->warning('vui lòng đăng nhập trước');
             return redirect('/login');
+        }
+    }
+
+    public function resetPassword(changePassword $request){
+        $Login = Auth::guard('admin_managers')->user();
+        if($Login){
+            $password = $request->new_password;
+            $data = [
+                'ma_PIN' => $request->ma_PIN,
+                'password' => $request->password,
+            ];
+            $id_login = Auth::guard('admin_managers')->id();
+            $dataInf =  AdminManager::find($id_login);
+            $check = Auth::guard('admin_managers')->attempt($data);
+            if($check){
+                $newData = $request->all();
+                $newData['password'] = bcrypt($password);
+                $dataInf->update($newData);
+                Auth::guard('admin_managers')->logout();
+                return response()->json([
+                    'status' =>200,
+                    'alert' => 'bạn đã đổi mật khẩu mới! hãy thử đăng nhập lại!'
+                ]);
+
+            }else{
+                return response()->json([
+                    'status' =>500,
+                    'alert' => 'thông tin bạn đã nhập không đúng'
+                ]);
+            }
+            return response()->json([
+                'statusLogin' => true,
+            ]);
+
+        }else{
+            $email  = $request->your_email;
+            $check_email = AdminManager::where('email', $email)->first();
+
+            if($check_email){
+                $hash = $check_email->hash;
+                $fullname = $check_email->fullName;
+                $codeXN = str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
+                FacadesSession::put('ma_xn', $codeXN);
+                FacadesSession::put('reset_password_expires_at', Carbon::now()->addMinutes(5));
+                Mail::to($request->your_email)->send(new resetPassword(
+                    $check_email->email,
+                    $hash,
+                    $fullname,
+                    $codeXN,
+                    'status change your password',
+                ));
+                return response()->json([
+                    'status' =>400,
+                    'alert' => 'kiểm tra email của bạn để được hướng dẫn đổi mật khẩu!'
+                ]);
+            }   else{
+                return response()->json([
+                    'status' =>500,
+                    'alert' => 'email của bạn không xác minh được!'
+                ]);
+            }
+            return response()->json([
+                'statusLogin' => false,
+            ]);
+        }
+
+    }
+
+
+    public function ChangeActionPass($hash ,changePasswordAction  $Request){
+        $Login = Auth::guard('admin_managers')->user();
+        if($Login){
+                return redirect('/setting/Introduce/form');
+        }else{
+            $code = $Request->codeAction;
+            $check =  FacadesSession::get('ma_xn');
+            if($check && $check === $code){
+                $checkAction = AdminManager::where('hash', $hash)->first();
+                $data['password'] = bcrypt( $Request->new_password);
+                $checkAction->update($data);
+                return response()->json([
+                    'alert' => 'thay đổi mật khẩu thành công',
+                    'status' => 200,
+                ]);
+            }else{
+                return response()->json([
+                    'alert' => 'mã xác nhận không hợp lệ',
+                    'statusXN' => 500,
+                ]);
+            }
+
+        }
+    }
+    public function checkEmail($hash){
+        $Login = Auth::guard('admin_managers')->user();
+        if($Login){
+                return redirect('/setting/Introduce/form');
+        }else{
+            return view('password.passChange' ,compact('hash'));
+        }
+
+    }
+
+
+    public function viewpassword(){
+        $Login = Auth::guard('admin_managers')->user();
+        if ($Login) {
+            return view('password.resetPassword');
+        }else{
+            Toastr()->warning('vui lòng đăng nhập trước');
+            return redirect('/login');
+        }
+    }
+
+
+    public function viewQuenpass(){
+        $Login = Auth::guard('admin_managers')->user();
+        if (!$Login) {
+            return view('password.forgetpassword');
+        }else{
+            Toastr()->error('lỗi');
+            return redirect('/setting/Introduce/form');
         }
     }
 
