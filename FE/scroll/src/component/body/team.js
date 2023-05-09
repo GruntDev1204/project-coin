@@ -28,6 +28,7 @@ export default function TeamMember(){
             </div>
             ))}
 
+
         </div>
      </div>
    )

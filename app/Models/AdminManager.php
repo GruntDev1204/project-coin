@@ -20,5 +20,6 @@ class AdminManager extends Authenticatable
         'ma_PIN',
         'vai_tro',
         'describe_vai_tro',
+        'hash',
     ];
 }

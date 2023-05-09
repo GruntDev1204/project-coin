@@ -87,10 +87,10 @@ new Vue({
     created() {
         this.loadIntro()
         this.LoadLink()
-        this.LoadAllmember()
         this.loadRM()
         this.loadList()
         this.loadToken()
+        this.LoadAllmember()
 
     },
     methods: {

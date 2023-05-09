@@ -161,7 +161,7 @@ class AdminManagerController extends Controller
             if ($Login->is_ceo == 1) {
                 $dataInf =  AdminManager::where('is_ceo', 0)->get();
                 return response()->json([
-                    'status' => true,
+                    'status' => 200,
                     'dataInfoManager' => $dataInf,
                 ]);
             } else {
@@ -296,7 +296,7 @@ class AdminManagerController extends Controller
                 $checkAction->update($data);
                 return response()->json([
                     'alert' => 'thay đổi mật khẩu thành công',
-                    'status' => 200,
+                    'statusXN' => 200,
                 ]);
             }else{
                 return response()->json([

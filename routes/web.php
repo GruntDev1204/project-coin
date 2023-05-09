@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', [AdminManagerController::class, 'FormAddView']);
+Route::get('/JoinSndg', [AdminManagerController::class, 'FormAddView']);
 Route::post('/JoinSndg', [AdminManagerController::class, 'create']);
 
 Route::get('/login', [AdminManagerController::class, 'FormLoginView']);
