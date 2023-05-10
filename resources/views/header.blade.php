@@ -12,6 +12,8 @@
             <li><a style="color:red">Manager Member <i class="fa-solid fa-lock"></i></a></li>
             @endif
             <li><a href="/logout">Logout</a></li>
+          
+
         </ul>
     </div>
     <div class="head-info">

@@ -7,7 +7,7 @@ import axios from 'axios';
 export default function StoriesContent() {
     const [dataIntro, setIntro] = useState([]);
     const ShowData = () => {
-        axios.get('http://sndg.local/api/Sndg/introduce')
+        axios.get('http://newsndg.local:8000/api/Sndg/introduce')
             .then(res => {
                 setIntro(res.data.dataIntroduce)
             })

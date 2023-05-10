@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class AdminsSndg extends Seeder
 {
@@ -22,6 +23,7 @@ class AdminsSndg extends Seeder
                 'user_info'=> 'hotrung6935@gmail.com' ,
                 'password'=> bcrypt('hotrung120401') ,
                 'fullName'=> 'HO TRUNG' ,
+                'hash'=> Str::uuid() ,
                 'ma_PIN'=> 120401 ,
                 'vai_tro' =>'Develop',
                 'describe_vai_tro' =>'Fstack Develop Web',

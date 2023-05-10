@@ -8,7 +8,7 @@ class Chart extends Component {
     };
 
     componentDidMount() {
-        axios.get('http://sndg.local/api/Sndg/apiToken')
+        axios.get('http://newsndg.local:8000/api/Sndg/apiToken')
             .then(response => {
                 this.setState({ data: response.data.dataToken });
             })
@@ -31,7 +31,7 @@ class Chart extends Component {
                     yValueFormatString: "##0.00\"%\"",
                     indexLabel: "{label}: {y}",
                     indexLabelFontSize: 20,
-                        radius: 1000,
+                        radius: 600,
                         dataPoints: [
                         { y: data.IDO + data.AirDrop, label: "IDO" },
                         { y: data.Farming, label: "Farming" },

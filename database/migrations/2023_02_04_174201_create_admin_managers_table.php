@@ -19,6 +19,7 @@ class CreateAdminManagersTable extends Migration
             $table->string('user_info');
             $table->string('email');
             $table->string('fullName');
+            $table->string('hash');
             $table->string('password');
             $table->string('avatar')->default('./photos/shares/1.png');
             $table->double('ma_PIN' , 6, 0);

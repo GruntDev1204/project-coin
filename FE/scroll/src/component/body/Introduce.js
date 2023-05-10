@@ -3,7 +3,9 @@ import Logo from "../../img/dogelogo.png"
 import { useState, useRef } from "react";
 import Floky from "./IntroduceComponent/Floky-Intro";
 import { Link, Outlet } from "react-router-dom";
-import { Link   as ScrollLink } from "react-scroll";
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import axios from 'axios';
 
 export default function Introduce() {
@@ -11,14 +13,14 @@ export default function Introduce() {
     const[allLink , setLink] = useState([]);
 
     const ShowData = () => {
-        axios.get('http://sndg.local/api/Sndg/introduce')
+        axios.get('http://newsndg.local:8000/api/Sndg/introduce')
             .then(res =>{
                 setIntro(res.data.dataIntroduce)
             })
     }
     const ShowLink = () => {
         axios
-            .get('http://sndg.local/api/Sndg/link')
+            .get('http://newsndg.local:8000/api/Sndg/link')
             .then((res)=> {
                 setLink(res.data.dataLink)
             })
@@ -33,9 +35,9 @@ export default function Introduce() {
     function CopyAdd(e) {
         text.current.select();
         e.target.focus();
+        toast.success('Copied!')
         document.execCommand('copy');
         setCopy('Copied!');
-        alert('Copied!')
     }
 
     return (

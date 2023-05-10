@@ -90,7 +90,11 @@ $letterspacing-3 : 0.2px;
 
 
 
-
+@mixin backgroundfullsize(){
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
 
 @mixin paddingY{
     padding-top: 20px;
@@ -115,8 +119,20 @@ $letterspacing-3 : 0.2px;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
+    justify-content: center;
+
+}
+@mixin drt_col_end {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
     justify-content: space-between;
 }
+@mixin drt_col_start_2 {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+ }
 
 @mixin drt_colum() {
     display: flex;
@@ -130,6 +146,17 @@ $letterspacing-3 : 0.2px;
     align-items: center;
 }
 
+@mixin drt_row_end() {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+@mixin wrap_row_1(){
+    gap: 50px;
+    column-gap: 50px;
+    flex-wrap: wrap;
+}
+
 @mixin input-Primary() {
     background-color: $input-color-light;
     padding: 0 5px 0 5px;
@@ -140,25 +167,28 @@ $letterspacing-3 : 0.2px;
     color: $backGround-dark;
 
 }
-
-@mixin ButtonElement-md() {
-    background-color: $backGround-element;
-    border: $border-button-light ;
+@mixin background-ip(){
+    padding-top: 3px;
+    padding-bottom: 3px;
+    width: 50%;
+    height: 46px;
+}
+@mixin buttonElement(){
+    width: 170px;
+    height: 40px;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
+}
+@mixin ButtonElement-gray() {
+    background-color: $backGround-element;
+    border: $border-button-light ;
     color: $font-button-color;
     border-radius: $border-goc;
-    font-size: 23px;
-    font-weight: 900;
-    width: 200px;
-    height: 40px;
-
-    &:hover {
-        background-color: $backGround-dark;
-        color: $color-font-5;
-    }
+    font-size: $font-size-sm-3;
+    font-weight: $font-weight4;
+    @include buttonElement();
 }
 
 @mixin lg-font() {
@@ -240,6 +270,7 @@ $letterspacing-3 : 0.2px;
     height: 210px;
     width: 200px;
     border-radius: 50%;
+    overflow: hidden;
 }
 
 
@@ -256,12 +287,17 @@ $letterspacing-3 : 0.2px;
     border-radius: 50%;
 }
 
-@mixin avatar-sm {
+@mixin avatar-sm-2{
     width: 55px;
     height: 55px;
     border-radius: 50%;
     object-fit: cover;
-
+}
+@mixin avatar-md-2{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 @mixin reset-df() {
@@ -269,6 +305,7 @@ $letterspacing-3 : 0.2px;
         width: 100%;
         height: 100%;
         cursor: pointer;
+        overflow: hidden;
     }
 
     a {
@@ -283,7 +320,7 @@ $letterspacing-3 : 0.2px;
     .center {
         @include drt_colum();
     }
-    .title, p ,h3 ,h2,h1 ,.content-str,.object-floky,.area-title-str{
+    .title,.info-header, p ,h3 ,h2,h1 ,.logo-team,.content-str,.object-floky,.area-title-str,.input,li{
         cursor: pointer;
     }
     section{
@@ -296,6 +333,15 @@ $letterspacing-3 : 0.2px;
         font-weight: $font-weight4;
         color: $color-font-7;
         margin-bottom: $bottom-sm;
+        -webkit-text-stroke: 0.5px $color-font-7;
+        cursor: pointer;
+        &:hover{
+        color: $color-font-4;
+        -webkit-text-stroke: 0.5px $color-font-4;
+
+
+        }
+
     }
     .close:hover{
         color: red;

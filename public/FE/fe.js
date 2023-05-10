@@ -64,15 +64,33 @@ new Vue({
         },
 
         listMember: [],
+        arrayNewpass:{
+            ma_PIN: '',
+            password: '',
+            new_password: '',
+            password_confirmation: '',
+
+            your_email:''
+        },
+
+
+        action:{
+            new_password:'',
+            codeAction:'',
+            re_new_password:'',
+        },
+
+
+
 
     },
     created() {
         this.loadIntro()
         this.LoadLink()
-        this.LoadAllmember()
         this.loadRM()
         this.loadList()
         this.loadToken()
+        this.LoadAllmember()
 
     },
     methods: {
@@ -124,15 +142,15 @@ new Vue({
                         alert('ụ má sida ròi')
                     }
                 })
-
         },
         updateIntro() {
-            axios.post('/setting/Introduce/ChangeIntro/', this.arrayIntro)
+            axios
+               .post('/setting/Introduce/ChangeIntro/', this.arrayIntro)
                 .then((res) => {
                     if (res.data.status) {
                         toastr.success('Change SuccessFully!');
                     } else {
-                        toastr.error('lỗi!');
+                        toastr.error('error!');
                     }
                 })
                 .catch((res) => {
@@ -162,7 +180,8 @@ new Vue({
 
         },
         updateLink() {
-            axios.post('/setting/Link/FixLink/', this.arrayLink)
+            axios
+                .post('/setting/Link/FixLink', this.arrayLink)
                 .then((res) => {
                     if (res.data.status) {
                         toastr.success('Change SuccessFully!');
@@ -245,10 +264,66 @@ new Vue({
         LoadAllmember() {
             axios.get('/listMember')
                 .then((res) => {
-                    if (res.data.status) {
+                    if (res.data.status ==200) {
                         this.listMember = res.data.dataInfoManager
                     }
                 })
+
+        },
+
+        //change password
+        newPassword() {
+            axios.post('/resetPass' ,this.arrayNewpass)
+                .then((res) => {
+                    if(res.data.statusLogin){
+                        if (res.data.status == 200) {
+                            toastr.success(res.data.alert)
+                            setTimeout(() => {
+                                window.location.href = '/login';
+                            }, 2000);
+                        }else{
+                            toastr.error(res.data.alert)
+                        }
+                    }else{
+                        axios.post('/resetPass' ,this.arrayNewpass)
+                        .then((res) => {
+                                if(res.data.status == 200){
+                                    toastr.info(res.data.alert)
+                                }else{
+                                    toastr.error(res.data.alert)
+                                }
+                        })
+                    }
+
+                })
+                .catch((res) => {
+                    var danh_sach_loi = res.response.data.errors;
+                    $.each(danh_sach_loi, function (key, value) {
+                        toastr.error(value[0]);
+                    });
+
+                })
+        },
+        changePass(hash) {
+            axios.post('/checkAction/' + hash , this.action)
+            .then((res)=>{
+                if(res.data.statusXN == 200){
+                    toastr.success(res.data.alert)
+                    setTimeout(() => {
+                    window.location.href = '/login';
+                    }, 2000);
+                }
+
+                else{
+                    toastr.error(res.data.alert)
+                }
+
+            })
+            .catch((res) => {
+                $.each(res.response.data.errors, function (key, value) {
+                    toastr.error(value[0])
+                });
+            });
         },
 
 
@@ -287,7 +362,6 @@ new Vue({
             axios.get('/setting/RM/deletedRM/' + id)
                 .then((res) => {
                     if (res.data.status == 200) {
-                        // this.ListTodo = this.ListTodo.filter(todo => todo.id_RM !== id);
                         this.loadRM();
                         toastr.success(res.data.alert);
                     }

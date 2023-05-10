@@ -1,8 +1,8 @@
 @extends('master')
 @section('content')
 <div class="form-manager-admins">
-    <template v-for="(v,k) in listMember">
-        <div class="admin-info">
+    <template  v-for="(v,k) in listMember">
+        <div class="admin-info" >
             <div class="img-avatar"><img v-bind:src="v.avatar" ></div>
             <p>ID : @{{v.id}} </p>
             <p>Member : @{{v.fullName}} </p>
