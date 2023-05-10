@@ -287,7 +287,11 @@ new Vue({
                     }else{
                         axios.post('/resetPass' ,this.arrayNewpass)
                         .then((res) => {
+<<<<<<< HEAD
                                 if(res.data.status == 200){
+=======
+                                if(res.data.status == 400){
+>>>>>>> 4763532b992aa5377e792809b1b465dca3d73e4d
                                     toastr.info(res.data.alert)
                                 }else{
                                     toastr.error(res.data.alert)
