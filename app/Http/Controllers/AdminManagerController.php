@@ -251,22 +251,12 @@ class AdminManagerController extends Controller
         }else{
             $email  = $request->your_email;
             $check_email = AdminManager::where('email', $email)->first();
-<<<<<<< HEAD
-=======
-
->>>>>>> 4763532b992aa5377e792809b1b465dca3d73e4d
             if($check_email){
                 $hash = $check_email->hash;
                 $fullname = $check_email->fullName;
                 $codeXN = str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
-<<<<<<< HEAD
                 FacadesSession::put(['ma_xn' => $codeXN, 'reset_password_expires_at' => Carbon::now()->addMinutes(5)]);
                 Mail::to($email)->send(new resetPassword(
-=======
-                FacadesSession::put('ma_xn', $codeXN);
-                FacadesSession::put('reset_password_expires_at', Carbon::now()->addMinutes(5));
-                Mail::to($request->your_email)->send(new resetPassword(
->>>>>>> 4763532b992aa5377e792809b1b465dca3d73e4d
                     $check_email->email,
                     $hash,
                     $fullname,
@@ -274,11 +264,7 @@ class AdminManagerController extends Controller
                     'status change your password',
                 ));
                 return response()->json([
-<<<<<<< HEAD
                     'status' =>200,
-=======
-                    'status' =>400,
->>>>>>> 4763532b992aa5377e792809b1b465dca3d73e4d
                     'alert' => 'kiểm tra email của bạn để được hướng dẫn đổi mật khẩu!'
                 ]);
             }   else{
